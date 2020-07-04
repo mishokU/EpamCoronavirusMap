@@ -3,6 +3,8 @@ package com.example.epamcoronavirusmap.ui.map
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import com.example.epamcoronavirusmap.databinding.FragmentMapBinding
@@ -12,11 +14,10 @@ import javax.inject.Inject
 
 class MapFragment : DaggerFragment(), MapView {
 
-    private lateinit var binding : FragmentMapBinding
+    private lateinit var binding: FragmentMapBinding
 
     @Inject
     lateinit var presenter: MapPresenter
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,6 +25,7 @@ class MapFragment : DaggerFragment(), MapView {
     ): View? {
         binding = FragmentMapBinding.inflate(inflater)
         // Inflate the layout for this fragment
+        //uihuiyuiyuggh
         return binding.root
     }
 
@@ -33,14 +35,10 @@ class MapFragment : DaggerFragment(), MapView {
     }
 
     private fun showProgress(show: Boolean) {
-        if(show) {
-            binding.progressBar.visibility = View.VISIBLE
-        } else {
-            binding.progressBar.visibility = View.INVISIBLE
-        }
+        binding.progressBar.visibility = if (show) VISIBLE else GONE
     }
 
-    private fun showErrorMessage(error : Result.Error?) {
+    private fun showErrorMessage(error: Result.Error?) {
         binding.errorText.isVisible = error != null
         binding.errorText.text = error?.exception?.message
     }
@@ -50,7 +48,7 @@ class MapFragment : DaggerFragment(), MapView {
     }
 
     override fun update(result: MapResult) {
-        when(result){
+        when (result) {
             is Result.Success -> loadCountiesData(result.data)
         }
         showErrorMessage(result as? Result.Error)
