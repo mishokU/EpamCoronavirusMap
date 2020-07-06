@@ -1,12 +1,10 @@
 package com.example.epamcoronavirusmap.di.modules
 
-import com.example.epamcoronavirusmap.api.BASE_URL
+import com.example.epamcoronavirusmap.api.Constants.Companion.BASE_URL
 import com.example.epamcoronavirusmap.api.CoronavirusApi
 import com.example.epamcoronavirusmap.api.moshi
-import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
-import dagger.Reusable
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton

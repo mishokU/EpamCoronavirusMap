@@ -4,57 +4,51 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import com.example.epamcoronavirusmap.databinding.FragmentMapBinding
-import com.example.epamcoronavirusmap.domain.Result
-import dagger.android.support.DaggerFragment
+import com.example.epamcoronavirusmap.ui.base.BaseFragment
 import javax.inject.Inject
 
-class MapFragment : DaggerFragment(), MapView {
+class MapFragment : BaseFragment(), MapContract.View {
 
     private lateinit var binding : FragmentMapBinding
 
     @Inject
-    lateinit var presenter: MapPresenter
-
+    lateinit var presenter: MapContract.Presenter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMapBinding.inflate(inflater)
-        // Inflate the layout for this fragment
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        presenter.onBind(this)
+    override fun getLayoutId(): Int {
+        return binding.root.id
     }
 
-    private fun showProgress(show: Boolean) {
-        if(show) {
-            binding.progressBar.visibility = View.VISIBLE
-        } else {
-            binding.progressBar.visibility = View.INVISIBLE
-        }
+    override fun displayCountries(countries: List<String>) {
+        TODO("Not yet implemented")
     }
 
-    private fun showErrorMessage(error : Result.Error?) {
-        binding.errorText.isVisible = error != null
-        binding.errorText.text = error?.exception?.message
+    override fun showCountry(country: String) {
+        TODO("Not yet implemented")
     }
 
-    private fun loadCountiesData(countries: List<String>) {
-        //Timber.d("countries", countries)
+    override fun showErrorMessage(message: String?) {
+        binding.errorText.text = message
     }
 
-    override fun update(result: MapResult) {
-        when(result){
-            is Result.Success -> loadCountiesData(result.data)
-        }
-        showErrorMessage(result as? Result.Error)
-        showProgress(result is Result.Loading)
+    override fun showProgress() {
+        binding.progressBar.visibility = View.VISIBLE
+    }
+
+    override fun hideProgress() {
+        binding.progressBar.visibility = View.GONE
+    }
+
+    override fun showError() {
+        binding.errorText.visibility = View.VISIBLE
     }
 
 
