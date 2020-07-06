@@ -3,6 +3,8 @@ package com.example.epamcoronavirusmap.ui.map
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import com.example.epamcoronavirusmap.databinding.FragmentMapBinding
 import com.example.epamcoronavirusmap.ui.base.BaseFragment
@@ -10,7 +12,7 @@ import javax.inject.Inject
 
 class MapFragment : BaseFragment(), MapContract.View {
 
-    private lateinit var binding : FragmentMapBinding
+    private lateinit var binding: FragmentMapBinding
 
     @Inject
     lateinit var presenter: MapContract.Presenter
@@ -41,7 +43,6 @@ class MapFragment : BaseFragment(), MapContract.View {
 
     override fun showProgress() {
         binding.progressBar.visibility = View.VISIBLE
-    }
 
     override fun hideProgress() {
         binding.progressBar.visibility = View.GONE
@@ -50,6 +51,4 @@ class MapFragment : BaseFragment(), MapContract.View {
     override fun showError() {
         binding.errorText.visibility = View.VISIBLE
     }
-
-
 }
