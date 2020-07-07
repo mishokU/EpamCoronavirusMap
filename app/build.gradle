@@ -82,6 +82,9 @@ dependencies {
     //Circle image view
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+    // Images downloading
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
     //For debug
     api "com.jakewharton.timber:timber:$rootProject.timberVersion"
 

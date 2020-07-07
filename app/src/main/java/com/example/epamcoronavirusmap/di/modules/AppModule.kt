@@ -1,7 +1,9 @@
 package com.example.epamcoronavirusmap.di.modules
 
 import com.example.epamcoronavirusmap.api.CoronavirusApi
+import com.example.epamcoronavirusmap.api.news.CoronavirusNewsApi
 import com.example.epamcoronavirusmap.ui.map.MapPresenter
+import com.example.epamcoronavirusmap.ui.news.NewsPresenter
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -15,7 +17,9 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideMapPresenter(api : CoronavirusApi) : MapPresenter = MapPresenter(api)
+    fun provideMapPresenter(api: CoronavirusApi): MapPresenter = MapPresenter(api)
 
-
+    @Provides
+    @Singleton
+    fun provideNewsPresenter(api: CoronavirusNewsApi): NewsPresenter = NewsPresenter(api)
 }
