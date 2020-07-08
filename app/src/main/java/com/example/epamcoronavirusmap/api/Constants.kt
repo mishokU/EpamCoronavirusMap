@@ -1,3 +1,7 @@
 package com.example.epamcoronavirusmap.api
 
-const val BASE_URL = "test"
+class Constants {
+    companion object {
+        const val BASE_URL = "https://api.covid19api.com"
+    }
+}

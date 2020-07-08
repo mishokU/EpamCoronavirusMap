@@ -1,8 +1,6 @@
 package com.example.epamcoronavirusmap.api
 
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import kotlinx.coroutines.Deferred
+import io.reactivex.Observable
 import retrofit2.http.GET
 
 /*
@@ -12,7 +10,7 @@ import retrofit2.http.GET
 
 interface CoronavirusApi {
 
-    @GET("test")
-    fun getTestData() : Deferred<List<String>>
+    @GET("/summary")
+    fun getTestData(): Observable<List<String>>
 }
 

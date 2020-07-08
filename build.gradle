@@ -6,6 +6,9 @@ buildscript {
         lifecycleVersion = '2.2.0'
         roomVersion = '2.2.5'
         dagger = '2.27'
+        rxjava2_version = '2.2.19'
+        rxandroid_version = '2.1.1'
+        rxkotlin_version = '2.4.0'
         navigationVersion = "2.0.0"
         fabricVersion = '1.25.4'
         threetenabpVersion = '1.2.3'

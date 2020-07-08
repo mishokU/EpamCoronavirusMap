@@ -82,6 +82,11 @@ dependencies {
     //Circle image view
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+    // rx
+    implementation "io.reactivex.rxjava2:rxjava:$rxjava2_version"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
+    implementation "io.reactivex.rxjava2:rxkotlin:$rxkotlin_version"
+
     //For debug
     api "com.jakewharton.timber:timber:$rootProject.timberVersion"
 
