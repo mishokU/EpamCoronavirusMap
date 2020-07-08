@@ -11,12 +11,12 @@ import dagger.android.ContributesAndroidInjector
 abstract class FragmentsBuilderModule {
 
     @ContributesAndroidInjector
-    abstract fun contributeMapFragment() : MapFragment
+    abstract fun contributeMapFragment(): MapFragment
 
     @ContributesAndroidInjector
-    abstract fun contributeNewsFragment() : NewsFragment
+    abstract fun contributeNewsFragment(): NewsFragment
 
     @ContributesAndroidInjector
-    abstract fun contributeStatisticsFragment() : StatisticsFragment
+    abstract fun contributeStatisticsFragment(): StatisticsFragment
 
 }

@@ -12,14 +12,15 @@ import dagger.android.AndroidInjector
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [AndroidInjectionModule::class,
-    ActivityModule::class,
-    AppModule::class,
-    NetworkModule::class]
+@Component(
+    modules = [AndroidInjectionModule::class,
+        ActivityModule::class,
+        AppModule::class,
+        NetworkModule::class]
 )
 interface AppComponent : AndroidInjector<MainApplication> {
 
-    override fun inject(application : MainApplication)
+    override fun inject(application: MainApplication)
 
     @Component.Builder
     interface Builder {

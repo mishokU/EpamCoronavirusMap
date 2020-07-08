@@ -10,7 +10,7 @@ import retrofit2.http.GET
 
 interface CoronavirusApi {
 
-    @GET("test")
-    fun getTestData() : Observable<List<String>>
+    @GET("/summary")
+    fun getTestData(): Observable<List<String>>
 }
 

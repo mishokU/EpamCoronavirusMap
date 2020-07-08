@@ -14,13 +14,12 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideCoronavirusApi(retrofit: Retrofit) : CoronavirusApi
-            = retrofit.create(CoronavirusApi::class.java)
+    fun provideCoronavirusApi(retrofit: Retrofit): CoronavirusApi =
+        retrofit.create(CoronavirusApi::class.java)
 
     @Provides
     @Singleton
-    fun provideRetrofitInterface() : Retrofit
-        = Retrofit.Builder()
+    fun provideRetrofitInterface(): Retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .build()

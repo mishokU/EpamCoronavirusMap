@@ -8,15 +8,15 @@ import dagger.android.support.DaggerFragment
 
 abstract class BaseFragment : DaggerFragment(), BaseContract.View {
 
-    private var basePresenter : BaseContract.Presenter<BaseContract.View>? = null
-    private var rootView : View?= null
+    private var basePresenter: BaseContract.Presenter<BaseContract.View>? = null
+    private var rootView: View? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        if(rootView == null){
+        if (rootView == null) {
             rootView = inflater.inflate(getLayoutId(), container, false)
             basePresenter?.attach(this)
         }

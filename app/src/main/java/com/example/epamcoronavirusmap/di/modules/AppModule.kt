@@ -1,6 +1,5 @@
 package com.example.epamcoronavirusmap.di.modules
 
-import com.example.epamcoronavirusmap.api.CoronavirusApi
 import com.example.epamcoronavirusmap.ui.map.MapContract
 import com.example.epamcoronavirusmap.ui.map.MapPresenter
 import com.example.epamcoronavirusmap.utils.SchedulerProviderImpl
@@ -17,10 +16,7 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideMapPresenter(
-        api : CoronavirusApi,
-        scheduler : SchedulerProviderImpl
-    ) : MapContract.Presenter = MapPresenter(api, scheduler)
+    fun provideMapPresenter(): MapContract.Presenter = MapPresenter()
 
     @Provides
     @Singleton
