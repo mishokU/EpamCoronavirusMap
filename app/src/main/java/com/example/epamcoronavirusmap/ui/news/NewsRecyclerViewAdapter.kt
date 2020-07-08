@@ -50,9 +50,9 @@ class NewsRecyclerViewAdapter() : RecyclerView.Adapter<NewsRecyclerViewAdapter.N
             excerptTextView?.text = news.excerpt
 
             val imageInfo: Image? = news.images?.firstOrNull()
-            if (imageInfo != null) {
+            imageInfo?.url?.let {
                 Picasso.get()
-                    .load(imageInfo.url)
+                    .load(it)
                     .into(imageView)
             }
         }

@@ -3,6 +3,8 @@ package com.example.epamcoronavirusmap.ui.news
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -47,11 +49,7 @@ class NewsFragment : DaggerFragment(), NewsView {
     }
 
     private fun showProgress(show: Boolean) {
-        if (show) {
-            binding.progressBar.visibility = View.VISIBLE
-        } else {
-            binding.progressBar.visibility = View.INVISIBLE
-        }
+        binding.progressBar.visibility = if (show) VISIBLE else INVISIBLE
     }
 
     private fun showErrorMessage(error: Result.Error?) {
