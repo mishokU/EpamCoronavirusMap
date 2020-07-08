@@ -1,46 +1,30 @@
 package com.example.epamcoronavirusmap.ui.map
 
-import com.example.epamcoronavirusmap.api.CoronavirusApi
-import com.example.epamcoronavirusmap.domain.Result
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import com.example.epamcoronavirusmap.api.CoronavirusService
+import com.example.epamcoronavirusmap.ui.base.BasePresenter
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 
+class MapPresenter : BasePresenter<MapContract.View>(), MapContract.Presenter {
 
-typealias MapResult = Result<List<String>>
-
-class MapPresenter(private val api : CoronavirusApi) {
-
-    private var coroutineScope = CoroutineScope(Dispatchers.Main + Job())
-    private var result : MapResult = Result.Loading
-    private lateinit var view: MapView
-
-    init {
-        loadCountries()
+    override fun onCountryClick(country: String) {
+        view?.showCountry(country)
     }
 
-    fun onBind(view : MapView){
-        this.view = view
-    }
-
-    private fun loadCountries() {
-        coroutineScope.launch {
-            val dataAsync = api.getTestData()
-            try {
-                val data = dataAsync.await()
-                updateView { Result.Loading }
-                if(!data.isNullOrEmpty()){
-                    updateView { Result.Success(data) }
-                }
-            } catch (e : Exception){
-                updateView { Result.Error(e) }
-            }
-        }
-    }
-
-    private fun updateView(mapper : MapResult.() -> MapResult) {
-        result = result.mapper()
-        view.update(result)
+    override fun loadCountries() {
+        view?.showProgress()
+        subscriptions.add(
+            CoronavirusService.retrofitService.getTestData()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally { view?.hideProgress() }
+                .subscribe({
+                    it?.let { view?.displayCountries(it) }
+                }, { ex ->
+                    view?.showError(ex.message.toString())
+                    Timber.e(ex)
+                })
+        )
     }
 }
