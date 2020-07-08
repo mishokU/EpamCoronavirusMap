@@ -12,6 +12,6 @@ class ContextModule {
 
     @Provides
     @Singleton
-    fun provideMainApplication(context: Context) : MainApplication
-            = context.applicationContext as MainApplication
+    fun provideMainApplication(context: Context): MainApplication =
+        context.applicationContext as MainApplication
 }

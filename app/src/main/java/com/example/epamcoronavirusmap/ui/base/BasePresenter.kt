@@ -4,15 +4,15 @@ import io.reactivex.disposables.CompositeDisposable
 import java.lang.ref.WeakReference
 
 open class BasePresenter<V : BaseContract.View> :
-    BaseContract.Presenter<V>{
+    BaseContract.Presenter<V> {
 
-    private var weakReferenceView : WeakReference<V>? = null
+    private var weakReferenceView: WeakReference<V>? = null
     protected val subscriptions = CompositeDisposable()
 
-    protected val view : V?
+    protected val view: V?
         get() = weakReferenceView?.get()
 
-    private val isViewAttached : Boolean
+    private val isViewAttached: Boolean
         get() = weakReferenceView != null && weakReferenceView!!.get() != null
 
     override fun unsubscribe() {
@@ -22,7 +22,7 @@ open class BasePresenter<V : BaseContract.View> :
     }
 
     override fun attach(view: V) {
-        if(!isViewAttached){
+        if (!isViewAttached) {
             weakReferenceView = WeakReference(view)
         }
     }

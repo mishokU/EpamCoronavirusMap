@@ -4,8 +4,8 @@ abstract class BaseContract {
 
     interface View : BaseView
 
-    interface Presenter<in V>{
+    interface Presenter<in V> {
         fun unsubscribe()
-        fun attach(view : V)
+        fun attach(view: V)
     }
 }

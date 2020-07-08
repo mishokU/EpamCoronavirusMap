@@ -1,15 +1,12 @@
 package com.example.epamcoronavirusmap.ui.map
 
-import com.example.epamcoronavirusmap.api.CoronavirusApi
+import com.example.epamcoronavirusmap.api.CoronavirusService
 import com.example.epamcoronavirusmap.ui.base.BasePresenter
-import com.example.epamcoronavirusmap.utils.SchedulerProvider
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
-import javax.inject.Inject
 
-class MapPresenter @Inject constructor(
-    private val api : CoronavirusApi,
-    private val scheduler : SchedulerProvider
-) : BasePresenter<MapContract.View>(), MapContract.Presenter {
+class MapPresenter : BasePresenter<MapContract.View>(), MapContract.Presenter {
 
     override fun onCountryClick(country: String) {
         view?.showCountry(country)
@@ -18,14 +15,14 @@ class MapPresenter @Inject constructor(
     override fun loadCountries() {
         view?.showProgress()
         subscriptions.add(
-            api.getTestData()
-                .subscribeOn(scheduler.io())
-                .observeOn(scheduler.ui())
+            CoronavirusService.retrofitService.getTestData()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .doFinally { view?.hideProgress() }
-                .subscribe ({
+                .subscribe({
                     it?.let { view?.displayCountries(it) }
-                }, {ex ->
-                    view?.showErrorMessage(ex.message)
+                }, { ex ->
+                    view?.showError(ex.message.toString())
                     Timber.e(ex)
                 })
         )
