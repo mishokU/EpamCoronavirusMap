@@ -1,6 +1,6 @@
 package com.example.epamcoronavirusmap.ui.news
 
-import com.example.epamcoronavirusmap.api.NEWS_API_DEFAULT_COUNTRY
+import com.example.epamcoronavirusmap.api.Constants.Companion.NEWS_API_DEFAULT_COUNTRY
 import com.example.epamcoronavirusmap.api.news.CoronavirusNewsApi
 import com.example.epamcoronavirusmap.api.news.model.NewsInfo
 import com.example.epamcoronavirusmap.domain.Result
