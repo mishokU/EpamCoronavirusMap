@@ -49,7 +49,7 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.3.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
@@ -86,9 +86,12 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:$rxjava2_version"
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
     implementation "io.reactivex.rxjava2:rxkotlin:$rxkotlin_version"
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
 
     //For debug
     api "com.jakewharton.timber:timber:$rootProject.timberVersion"
+
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
 
     //For animations
     implementation "com.airbnb.android:lottie:3.0.0"
