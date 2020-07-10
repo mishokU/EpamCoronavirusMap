@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.epamcoronavirusmap.R
 import com.example.epamcoronavirusmap.api.news.model.NewsPost
@@ -12,17 +13,13 @@ import com.example.epamcoronavirusmap.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_news.*
 import javax.inject.Inject
 
-/*
-    Вам нужно будет написать Presenter + View, реализовать, как у меня в примере
-    Также написать адаптер для RecyclerView
-*/
-
-class NewsFragment : BaseFragment(), NewsContract.View {
+class NewsFragment : BaseFragment(), NewsContract.View,
+    NewsRecyclerViewAdapter.OnItemClickListener {
 
     @Inject
     lateinit var presenter: NewsContract.Presenter
 
-    private var adapter: NewsRecyclerViewAdapter = NewsRecyclerViewAdapter()
+    private var adapter: NewsRecyclerViewAdapter = NewsRecyclerViewAdapter(this)
 
     override fun getLayoutId(): Int {
         return R.layout.fragment_news
@@ -61,5 +58,14 @@ class NewsFragment : BaseFragment(), NewsContract.View {
 
     override fun displayPosts(posts: List<NewsPost>) {
         adapter.setPosts(posts)
+    }
+
+    override fun showPostFragment(url: String) {
+        val action = NewsFragmentDirections.actionNewsFragmentToPostFragment(url)
+        findNavController().navigate(action)
+    }
+
+    override fun onItemClick(url: String) {
+        presenter.onItemClick(url)
     }
 }

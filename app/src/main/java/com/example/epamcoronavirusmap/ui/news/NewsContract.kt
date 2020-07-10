@@ -7,9 +7,11 @@ interface NewsContract {
 
     interface Presenter : BaseContract.Presenter<NewsContract.View> {
         fun loadPosts()
+        fun onItemClick(url: String)
     }
 
     interface View : BaseContract.View {
         fun displayPosts(posts: List<NewsPost>)
+        fun showPostFragment(url: String)
     }
 }

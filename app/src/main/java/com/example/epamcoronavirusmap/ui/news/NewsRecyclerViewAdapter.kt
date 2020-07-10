@@ -9,14 +9,27 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.epamcoronavirusmap.R
 import com.example.epamcoronavirusmap.api.news.model.Image
 import com.example.epamcoronavirusmap.api.news.model.NewsPost
+import com.example.epamcoronavirusmap.ui.base.BaseFragment
 import com.squareup.picasso.Picasso
 
-class NewsRecyclerViewAdapter() : RecyclerView.Adapter<NewsRecyclerViewAdapter.NewsViewHolder>() {
+class NewsRecyclerViewAdapter(
+    fragment: BaseFragment
+) : RecyclerView.Adapter<NewsRecyclerViewAdapter.NewsViewHolder>() {
+
     private var news: MutableList<NewsPost> = mutableListOf()
+
+    private val listener: OnItemClickListener
+
+    init {
+        listener = fragment as OnItemClickListener
+    }
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         val news = news[position]
         holder.bindNews(news)
+        holder.view.setOnClickListener {
+            listener.onItemClick(news.webUrl)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
@@ -32,7 +45,7 @@ class NewsRecyclerViewAdapter() : RecyclerView.Adapter<NewsRecyclerViewAdapter.N
         notifyDataSetChanged()
     }
 
-    class NewsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class NewsViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         private var news: NewsPost? = null
         private var titleTextView: TextView? = null
         private var excerptTextView: TextView? = null
@@ -56,5 +69,9 @@ class NewsRecyclerViewAdapter() : RecyclerView.Adapter<NewsRecyclerViewAdapter.N
                     .into(imageView)
             }
         }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(url: String)
     }
 }
