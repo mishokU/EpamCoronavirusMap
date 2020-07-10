@@ -1,5 +1,6 @@
 package com.example.epamcoronavirusmap.ui.map
 
+import android.content.Context
 import android.view.View
 import com.example.epamcoronavirusmap.R
 import com.example.epamcoronavirusmap.ui.base.BaseContract
@@ -19,14 +20,14 @@ class MapFragment : BaseFragment(), MapContract.View {
         return R.layout.fragment_map
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        presenter.loadCountries()
+    }
+
     @Suppress("UNCHECKED_CAST")
     override fun initBasePresenter(): BaseContract.Presenter<BaseContract.View> =
         presenter as BaseContract.Presenter<BaseContract.View>
-
-    override fun onResume() {
-        super.onResume()
-        presenter.loadCountries()
-    }
 
     override fun displayCountries(countries: List<String>) {
 
