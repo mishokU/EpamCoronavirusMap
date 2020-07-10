@@ -3,8 +3,7 @@ package com.example.epamcoronavirusmap.ui.base
 import io.reactivex.disposables.CompositeDisposable
 import java.lang.ref.WeakReference
 
-open class BasePresenter<V : BaseContract.View> :
-    BaseContract.Presenter<V> {
+abstract class BasePresenter<V : BaseContract.View> : BaseContract.Presenter<V> {
 
     private var weakReferenceView: WeakReference<V>? = null
     protected val subscriptions = CompositeDisposable()
