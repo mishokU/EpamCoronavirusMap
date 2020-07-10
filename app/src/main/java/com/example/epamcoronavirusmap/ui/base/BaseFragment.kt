@@ -11,6 +11,8 @@ abstract class BaseFragment : DaggerFragment(), BaseContract.View {
     private var basePresenter: BaseContract.Presenter<BaseContract.View>? = null
     private var rootView: View? = null
 
+    abstract fun getLayoutId(): Int
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -18,12 +20,13 @@ abstract class BaseFragment : DaggerFragment(), BaseContract.View {
     ): View? {
         if (rootView == null) {
             rootView = inflater.inflate(getLayoutId(), container, false)
+            basePresenter = initBasePresenter()
             basePresenter?.attach(this)
         }
-        return super.onCreateView(inflater, container, savedInstanceState)
+        return rootView
     }
 
-    abstract fun getLayoutId(): Int
+    abstract fun initBasePresenter(): BaseContract.Presenter<BaseContract.View>
 
     override fun onDestroy() {
         super.onDestroy()

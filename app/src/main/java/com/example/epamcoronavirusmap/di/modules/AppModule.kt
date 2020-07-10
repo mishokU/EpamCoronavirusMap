@@ -19,7 +19,8 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideMapPresenter(): MapContract.Presenter = MapPresenter()
+    fun provideMapPresenter(schedulerProvider: SchedulerProviderImpl)
+            : MapContract.Presenter = MapPresenter(schedulerProvider)
 
     @Provides
     @Singleton
