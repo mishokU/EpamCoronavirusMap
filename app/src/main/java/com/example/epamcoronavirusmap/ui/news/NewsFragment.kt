@@ -1,5 +1,6 @@
 package com.example.epamcoronavirusmap.ui.news
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.view.View.INVISIBLE
@@ -37,8 +38,8 @@ class NewsFragment : BaseFragment(), NewsContract.View {
         setupRecyclerView()
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
         presenter.loadPosts()
     }
 
