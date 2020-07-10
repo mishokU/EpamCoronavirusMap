@@ -1,11 +1,11 @@
 package com.example.epamcoronavirusmap.di.modules
 
-import com.example.epamcoronavirusmap.ui.map.MapContract
-import com.example.epamcoronavirusmap.api.CoronavirusApi
 import com.example.epamcoronavirusmap.api.news.CoronavirusNewsApi
+import com.example.epamcoronavirusmap.ui.map.MapContract
 import com.example.epamcoronavirusmap.ui.map.MapPresenter
-import com.example.epamcoronavirusmap.utils.SchedulerProviderImpl
+import com.example.epamcoronavirusmap.ui.news.NewsContract
 import com.example.epamcoronavirusmap.ui.news.NewsPresenter
+import com.example.epamcoronavirusmap.utils.SchedulerProviderImpl
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -27,5 +27,8 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideNewsPresenter(api: CoronavirusNewsApi): NewsPresenter = NewsPresenter(api)
+    fun provideNewsPresenter(
+        api: CoronavirusNewsApi,
+        scheduler: SchedulerProviderImpl
+    ): NewsContract.Presenter = NewsPresenter(api, scheduler)
 }

@@ -2,47 +2,30 @@ package com.example.epamcoronavirusmap.ui.news
 
 import com.example.epamcoronavirusmap.api.Constants.Companion.NEWS_API_DEFAULT_COUNTRY
 import com.example.epamcoronavirusmap.api.news.CoronavirusNewsApi
-import com.example.epamcoronavirusmap.api.news.model.NewsInfo
-import com.example.epamcoronavirusmap.domain.Result
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
-import retrofit2.await
+import com.example.epamcoronavirusmap.ui.base.BasePresenter
+import com.example.epamcoronavirusmap.utils.SchedulerProviderImpl
 
-typealias NewsResult = Result<NewsInfo?>
+class NewsPresenter(
+    private val api: CoronavirusNewsApi,
+    private val scheduler: SchedulerProviderImpl
+) : BasePresenter<NewsContract.View>(), NewsContract.Presenter {
 
-class NewsPresenter(private val api: CoronavirusNewsApi) {
-
-    private var coroutineScope = CoroutineScope(Dispatchers.Main + Job())
-    private var result: NewsResult = Result.Loading
-    private lateinit var view: NewsView
-
-    init {
-        loadNews()
-    }
-
-    fun onBind(view: NewsView) {
-        this.view = view
-    }
-
-    private fun loadNews() {
-        coroutineScope.launch {
-            val dataAsync = api.getNews(NEWS_API_DEFAULT_COUNTRY)
-            try {
-                val data = dataAsync.await()
-                updateView { Result.Loading }
-                data?.let {
-                    updateView { Result.Success(it) }
-                }
-            } catch (e: Exception) {
-                updateView { Result.Error(e) }
-            }
-        }
-    }
-
-    private fun updateView(mapper: NewsResult.() -> NewsResult) {
-        result = result.mapper()
-        view.update(result)
+    override fun loadPosts() {
+        view?.showProgress()
+        subscriptions.add(
+            api.getNews(NEWS_API_DEFAULT_COUNTRY)
+                .subscribeOn(scheduler.io())
+                .observeOn(scheduler.ui())
+                .doFinally { view?.hideProgress() }
+                .subscribe(
+                    {
+                        it?.let {
+                            view?.displayPosts(it.news)
+                        }
+                    }, { ex ->
+                        view?.showError(ex.message.toString())
+                    }
+                )
+        )
     }
 }

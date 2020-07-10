@@ -1,13 +1,14 @@
 package com.example.epamcoronavirusmap.di.modules
 
 import com.example.epamcoronavirusmap.api.Constants.Companion.BASE_URL
-import com.example.epamcoronavirusmap.api.CoronavirusApi
 import com.example.epamcoronavirusmap.api.Constants.Companion.NEWS_API_BASE_URL
+import com.example.epamcoronavirusmap.api.CoronavirusApi
 import com.example.epamcoronavirusmap.api.moshi
 import com.example.epamcoronavirusmap.api.news.CoronavirusNewsApi
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Named
 import javax.inject.Singleton
@@ -39,5 +40,6 @@ class NetworkModule {
     fun provideRetrofitNewsInterface(): Retrofit = Retrofit.Builder()
         .baseUrl(NEWS_API_BASE_URL)
         .addConverterFactory(MoshiConverterFactory.create(moshi))
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()
 }

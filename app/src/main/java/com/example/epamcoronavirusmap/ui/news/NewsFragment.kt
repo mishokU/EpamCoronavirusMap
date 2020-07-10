@@ -1,19 +1,15 @@
 package com.example.epamcoronavirusmap.ui.news
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
-import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.epamcoronavirusmap.R
 import com.example.epamcoronavirusmap.api.news.model.NewsPost
-import com.example.epamcoronavirusmap.databinding.FragmentNewsBinding
-import com.example.epamcoronavirusmap.domain.Result
-import dagger.android.support.DaggerFragment
+import com.example.epamcoronavirusmap.ui.base.BaseContract
+import com.example.epamcoronavirusmap.ui.base.BaseFragment
+import kotlinx.android.synthetic.main.fragment_news.*
 import javax.inject.Inject
 
 /*
@@ -21,58 +17,49 @@ import javax.inject.Inject
     Также написать адаптер для RecyclerView
 */
 
-class NewsFragment : DaggerFragment(), NewsView {
-
-    private lateinit var binding: FragmentNewsBinding
+class NewsFragment : BaseFragment(), NewsContract.View {
 
     @Inject
-    lateinit var presenter: NewsPresenter
+    lateinit var presenter: NewsContract.Presenter
 
-    private lateinit var recyclerView: RecyclerView
     private var adapter: NewsRecyclerViewAdapter = NewsRecyclerViewAdapter()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        binding = FragmentNewsBinding.inflate(inflater)
-        return binding.root
+    override fun getLayoutId(): Int {
+        return R.layout.fragment_news
     }
+
+    @Suppress("UNCHECKED_CAST")
+    override fun initBasePresenter(): BaseContract.Presenter<BaseContract.View> =
+        presenter as BaseContract.Presenter<BaseContract.View>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenter.onBind(this)
-
-        recyclerView = view.findViewById(R.id.newsRecyclerView)
         setupRecyclerView()
     }
 
-    private fun showProgress(show: Boolean) {
-        binding.progressBar.visibility = if (show) VISIBLE else INVISIBLE
+    override fun onResume() {
+        super.onResume()
+        presenter.loadPosts()
     }
 
-    private fun showErrorMessage(error: Result.Error?) {
-        binding.errorText.isVisible = error != null
-        binding.errorText.text = error?.exception?.message
+    override fun showProgress() {
+        progressBar.visibility = VISIBLE
     }
 
-    private fun loadNewsData(news: List<NewsPost>?) {
-        news.let {
-            adapter.setPosts(it!!)
-        }
+    override fun hideProgress() {
+        progressBar.visibility = INVISIBLE
     }
 
-    override fun update(result: NewsResult) {
-        when (result) {
-            is Result.Success -> loadNewsData(result.data?.news)
-        }
-        showErrorMessage(result as? Result.Error)
-        showProgress(result is Result.Loading)
+    override fun showError(error: String) {
+        errorText.text = error
     }
 
     fun setupRecyclerView() {
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.adapter = adapter
+    }
+
+    override fun displayPosts(posts: List<NewsPost>) {
+        adapter.setPosts(posts)
     }
 }
