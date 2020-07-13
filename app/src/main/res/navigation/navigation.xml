@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/mapFragment">
+    app:startDestination="@id/statisticsFragment">
 
     <fragment
         android:id="@+id/newsFragment"
@@ -29,9 +29,10 @@
             android:id="@+id/action_countriesFragment_to_statisticsFragment"
             app:destination="@id/statisticsFragment" />
     </fragment>
+    <!--
     <fragment
         android:id="@+id/googleMapFragment"
         android:name="com.example.epamcoronavirusmap.GoogleMapFragment"
         android:label="fragment_google_map"
-        tools:layout="@layout/fragment_google_map" />
+        tools:layout="@layout/fragment_google_map" /> -->
 </navigation>
