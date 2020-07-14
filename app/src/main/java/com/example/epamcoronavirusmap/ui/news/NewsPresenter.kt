@@ -28,4 +28,8 @@ class NewsPresenter(
                 )
         )
     }
+
+    override fun onItemClick(url: String) {
+        view?.showPostFragment(url)
+    }
 }

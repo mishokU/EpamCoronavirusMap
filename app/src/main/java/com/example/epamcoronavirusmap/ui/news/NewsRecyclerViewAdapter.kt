@@ -9,13 +9,26 @@ import com.example.epamcoronavirusmap.api.news.model.Image
 import com.example.epamcoronavirusmap.api.news.model.NewsPost
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.news_post_recycler_view_item.view.*
+import com.example.epamcoronavirusmap.ui.base.BaseFragment
 
-class NewsRecyclerViewAdapter() : RecyclerView.Adapter<NewsRecyclerViewAdapter.NewsViewHolder>() {
+class NewsRecyclerViewAdapter(
+    fragment: BaseFragment
+) : RecyclerView.Adapter<NewsRecyclerViewAdapter.NewsViewHolder>() {
+
     private var news: MutableList<NewsPost> = mutableListOf()
+
+    private val listener: OnItemClickListener
+
+    init {
+        listener = fragment as OnItemClickListener
+    }
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         val news = news[position]
         holder.bindNews(news)
+        holder.view.setOnClickListener {
+            listener.onItemClick(news.webUrl)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
@@ -46,5 +59,9 @@ class NewsRecyclerViewAdapter() : RecyclerView.Adapter<NewsRecyclerViewAdapter.N
                     .into(view.newsImage)
             }
         }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(url: String)
     }
 }

@@ -48,4 +48,6 @@ class MapFragment : BaseFragment(), MapContract.View {
     override fun showError(error: String) {
         errorText.text = error
     }
+
+
 }
