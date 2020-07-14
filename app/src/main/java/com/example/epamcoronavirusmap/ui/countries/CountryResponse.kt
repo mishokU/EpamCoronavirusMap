@@ -1,27 +1,27 @@
 package com.example.epamcoronavirusmap.ui.countries
 
+import com.squareup.moshi.Json
+
 data class CountryResponse(
-    val active: Int?,
-    val cases: Int?,
+    @Json(name = "active")
+    val activeCases: Int?,
+
+    @Json(name = "cases")
+    val totalCases: Int?,
+
     val casesPerOneMillion: Int?,
-    val country: String?,
-    val countryInfo: CountryInfo?,
-    val critical: Int?,
-    val deaths: Int?,
-    val deathsPerOneMillion: Float?,
-    val recovered: Int?,
+
+    @Json(name = "country")
+    val countryName: String?,
+
+    @Json(name = "deaths")
+    val totalDeaths: Int?,
+
+    @Json(name = "recovered")
+    val recoveredCases: Int?,
+
     val tests: Int?,
     val testsPerOneMillion: Int?,
     val todayCases: Int?,
-    val todayDeaths: Int?,
-    val updated: Long?
-)
-
-data class CountryInfo(
-    val _id: Int?,
-    val flag: String?,
-    val iso2: String?,
-    val iso3: String?,
-    val lat: Float?,
-    val long: Float?
+    val todayDeaths: Int?
 )
