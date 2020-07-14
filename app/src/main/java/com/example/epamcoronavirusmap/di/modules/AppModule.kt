@@ -3,6 +3,8 @@ package com.example.epamcoronavirusmap.di.modules
 import com.example.epamcoronavirusmap.api.news.CoronavirusNewsApi
 import com.example.epamcoronavirusmap.ui.map.MapContract
 import com.example.epamcoronavirusmap.ui.map.MapPresenter
+import com.example.epamcoronavirusmap.ui.statistics.StatisticsContract
+import com.example.epamcoronavirusmap.ui.statistics.StatisticsPresenter
 import com.example.epamcoronavirusmap.ui.news.NewsContract
 import com.example.epamcoronavirusmap.ui.news.NewsPresenter
 import com.example.epamcoronavirusmap.ui.post.PostContract
@@ -23,6 +25,11 @@ class AppModule {
     @Singleton
     fun provideMapPresenter(schedulerProvider: SchedulerProviderImpl)
             : MapContract.Presenter = MapPresenter(schedulerProvider)
+
+    @Provides
+    @Singleton
+    fun provideStatisticsPresenter(schedulerProvider: SchedulerProviderImpl)
+            : StatisticsContract.Presenter = StatisticsPresenter(schedulerProvider)
 
     @Provides
     @Singleton
