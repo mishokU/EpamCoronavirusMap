@@ -3,14 +3,13 @@ package com.example.epamcoronavirusmap.ui.news
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.epamcoronavirusmap.R
 import com.example.epamcoronavirusmap.api.news.model.Image
 import com.example.epamcoronavirusmap.api.news.model.NewsPost
-import com.example.epamcoronavirusmap.ui.base.BaseFragment
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.news_post_recycler_view_item.view.*
+import com.example.epamcoronavirusmap.ui.base.BaseFragment
 
 class NewsRecyclerViewAdapter(
     fragment: BaseFragment
@@ -45,28 +44,19 @@ class NewsRecyclerViewAdapter(
         notifyDataSetChanged()
     }
 
-    class NewsViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+    class NewsViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         private var news: NewsPost? = null
-        private var titleTextView: TextView? = null
-        private var excerptTextView: TextView? = null
-        private var imageView: ImageView? = null
-
-        init {
-            titleTextView = view.findViewById(R.id.newsTitle)
-            excerptTextView = view.findViewById(R.id.newsExcerpt)
-            imageView = view.findViewById(R.id.newsImage)
-        }
 
         fun bindNews(news: NewsPost) {
             this.news = news
-            titleTextView?.text = news.title
-            excerptTextView?.text = news.excerpt
+            view.newsTitle.text = news.title
+            view.newsExcerpt.text = news.excerpt
 
             val imageInfo: Image? = news.images?.firstOrNull()
             imageInfo?.url?.let {
                 Picasso.get()
                     .load(it)
-                    .into(imageView)
+                    .into(view.newsImage)
             }
         }
     }
