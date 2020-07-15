@@ -28,4 +28,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Splash" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:statusBarColor">@color/colorAccent</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
 </resources>

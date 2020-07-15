@@ -21,6 +21,8 @@
         <action
             android:id="@+id/action_newsFragment_to_countriesFragment"
             app:destination="@id/countriesFragment" />
+
+
     </fragment>
     <fragment
         android:id="@+id/postFragment"
@@ -52,6 +54,7 @@
             android:id="@+id/action_mapFragment_to_newsFragment"
             app:destination="@id/newsFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/countriesFragment"
         android:name="com.example.epamcoronavirusmap.ui.countries.CountriesFragment"

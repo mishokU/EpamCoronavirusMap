@@ -10,6 +10,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 
 /*
     По хорошему нужно сделать тут сервис, потому что сейчас я пишу через api
@@ -44,5 +45,9 @@ val retrofitStatistics: Retrofit = Retrofit.Builder()
 object CoronavirusService {
     val retrofitServiceStatistics: CoronavirusApi by lazy {
         retrofitStatistics.create(CoronavirusApi::class.java)
+    }
+
+    val retrofitService: CoronavirusApi by lazy {
+        retrofit.create(CoronavirusApi::class.java)
     }
 }
