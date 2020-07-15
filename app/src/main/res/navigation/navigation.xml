@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_newsFragment_to_postFragment"
             app:destination="@id/postFragment" />
+        <action
+            android:id="@+id/action_newsFragment_to_countriesFragment"
+            app:destination="@id/countriesFragment" />
     </fragment>
     <fragment
         android:id="@+id/postFragment"
@@ -27,12 +30,23 @@
         android:id="@+id/statisticsFragment"
         android:name="com.example.epamcoronavirusmap.ui.statistics.StatisticsFragment"
         android:label="fragment_statistics"
-        tools:layout="@layout/fragment_statistics" />
+        tools:layout="@layout/fragment_statistics">
+
+        <action
+            android:id="@+id/action_statisticsFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+
+    </fragment>
+
     <fragment
         android:id="@+id/mapFragment"
         android:name="com.example.epamcoronavirusmap.ui.map.MapFragment"
         android:label="fragment_map"
-        tools:layout="@layout/fragment_map" />
+        tools:layout="@layout/fragment_map">
+        <action
+            android:id="@+id/action_mapFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/countriesFragment"
         android:name="com.example.epamcoronavirusmap.ui.countries.CountriesFragment"

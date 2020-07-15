@@ -1,6 +1,5 @@
 package com.example.epamcoronavirusmap.ui.news
 
-//import com.squareup.picasso.Picasso
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +8,7 @@ import com.example.epamcoronavirusmap.R
 import com.example.epamcoronavirusmap.api.news.model.Image
 import com.example.epamcoronavirusmap.api.news.model.NewsPost
 import com.example.epamcoronavirusmap.ui.base.BaseFragment
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.news_post_recycler_view_item.view.*
 
 class NewsRecyclerViewAdapter(
