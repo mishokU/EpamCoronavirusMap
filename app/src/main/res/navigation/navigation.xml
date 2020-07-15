@@ -6,6 +6,11 @@
     app:startDestination="@id/statisticsFragment">
 
     <fragment
+        android:id="@+id/dailyStatisticsFragment"
+        android:name="com.example.epamcoronavirusmap.ui.histogram.DailyStatisticsFragment"
+        android:label="fragment_daily_statistics"
+        tools:layout="@layout/fragment_daily_statistics" />
+    <fragment
         android:id="@+id/newsFragment"
         android:name="com.example.epamcoronavirusmap.ui.news.NewsFragment"
         android:label="fragment_news"

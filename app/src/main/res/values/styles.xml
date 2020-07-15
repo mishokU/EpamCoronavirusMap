@@ -8,4 +8,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="HistogramStyle">
+        <item name="legendEnabled">false</item>
+        <item name="descriptionEnabled">false</item>
+        <item name="xAxisGridLines">false</item>
+        <item name="axisRightEnabled">false</item>
+        <item name="axisLeftAxisLines">false</item>
+        <item name="axisLeftDrawLabels">false</item>
+        <item name="axisLeftGridLines">false</item>
+        <item name="xRangeMaximum">8.0</item>
+        <item name="xAxisScaleEnabled">false</item>
+        <item name="yAxisScaleEnabled">false</item>
+    </style>
 </resources>
