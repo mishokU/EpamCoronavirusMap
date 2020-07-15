@@ -1,6 +1,7 @@
 package com.example.epamcoronavirusmap.api
 
 import com.example.epamcoronavirusmap.api.Constants.Companion.BASE_URL
+import com.example.epamcoronavirusmap.api.map.CoronavirusApi
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit

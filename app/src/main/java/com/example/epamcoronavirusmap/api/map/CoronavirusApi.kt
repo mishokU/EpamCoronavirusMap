@@ -1,4 +1,4 @@
-package com.example.epamcoronavirusmap.api
+package com.example.epamcoronavirusmap.api.map
 
 import io.reactivex.Observable
 import retrofit2.http.GET
@@ -11,6 +11,6 @@ import retrofit2.http.GET
 interface CoronavirusApi {
 
     @GET("/summary")
-    fun getTestData(): Observable<List<String>>
+    fun getGlobalCountriesData(): Observable<SummaryModel>
 }
 
