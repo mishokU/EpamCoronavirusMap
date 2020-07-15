@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="DailyStatisticsHistogram">
+        <attr name="legendEnabled" format="boolean" />
+        <attr name="descriptionEnabled" format="boolean" />
+        <attr name="xAxisGridLines" format="boolean" />
+        <attr name="axisRightEnabled" format="boolean" />
+        <attr name="axisLeftDrawLabels" format="boolean" />
+        <attr name="axisLeftAxisLines" format="boolean" />
+        <attr name="axisLeftGridLines" format="boolean" />
+        <attr name="xRangeMaximum" format="float" />
+        <attr name="xAxisScaleEnabled" format="boolean" />
+        <attr name="yAxisScaleEnabled" format="boolean" />
+    </declare-styleable>
+</resources>

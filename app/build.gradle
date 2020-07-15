@@ -42,6 +42,10 @@ android {
 
 }
 
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -63,6 +67,10 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation "com.squareup.retrofit2:retrofit:$retrofitVer"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofitVer"
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+
+    // http logging
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
 
     implementation "com.squareup.moshi:moshi:$version_moshi"
     implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
@@ -99,7 +107,13 @@ dependencies {
     //For animations
     implementation "com.airbnb.android:lottie:3.0.0"
 
+    // Charts
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
     //CardView
     implementation "androidx.cardview:cardview:1.0.0"
 
+    // Navigation
+    implementation 'android.arch.navigation:navigation-fragment:1.0.0'
+    implementation 'android.arch.navigation:navigation-ui:1.0.0'
 }
