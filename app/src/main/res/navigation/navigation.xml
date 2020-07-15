@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/mapFragment">
+    app:startDestination="@id/statisticsFragment">
 
     <fragment
         android:id="@+id/dailyStatisticsFragment"
@@ -14,7 +14,20 @@
         android:id="@+id/newsFragment"
         android:name="com.example.epamcoronavirusmap.ui.news.NewsFragment"
         android:label="fragment_news"
-        tools:layout="@layout/fragment_news" />
+        tools:layout="@layout/fragment_news">
+        <action
+            android:id="@+id/action_newsFragment_to_postFragment"
+            app:destination="@id/postFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/postFragment"
+        android:name="com.example.epamcoronavirusmap.ui.post.PostFragment"
+        android:label="fragment_post"
+        tools:layout="@layout/fragment_post">
+        <argument
+            android:name="post_url"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/statisticsFragment"
         android:name="com.example.epamcoronavirusmap.ui.statistics.StatisticsFragment"

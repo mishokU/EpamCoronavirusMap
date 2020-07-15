@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        card_view:cardCornerRadius="8dp"
+        card_view:cardElevation="4dp"
+        card_view:cardUseCompatPadding="true"
+        card_view:strokeWidth="1dp" >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/text_country_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_size_sub_item"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/margin_normal_size"
+                android:layout_marginTop="@dimen/margin_small_size"
+                android:layout_marginEnd="@dimen/margin_normal_size"
+                android:layout_marginBottom="@dimen/margin_small_size"
+                android:textSize="@dimen/text_size_large"
+                android:textStyle="italic|bold"
+                tools:text="Country name" />
+
+            <ImageView
+                android:id="@+id/icon_infected_cases"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/text_country_name"
+                android:src="@drawable/ic_infected"
+                android:layout_marginTop="@dimen/margin_small_size"
+                android:layout_marginStart="@dimen/margin_normal_size"
+                android:layout_marginEnd="@dimen/margin_normal_size"
+                android:layout_marginBottom="@dimen/margin_small_size" />
+
+            <LinearLayout
+                android:id="@+id/linear_layout_healthy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_toEndOf="@id/icon_infected_cases"
+                android:layout_below="@id/text_country_name"
+                android:layout_alignParentEnd="true">
+
+                <TextView
+                    android:id="@+id/text_total_cases"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_size_sub_item"
+                    android:layout_marginTop="@dimen/margin_small_size"
+                    android:layout_marginStart="@dimen/margin_normal_size"
+                    android:layout_marginEnd="@dimen/margin_small_size"
+                    android:layout_marginBottom="@dimen/margin_small_size"
+                    android:text="@string/total_infected"
+                    android:textSize="@dimen/text_size_normal"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/total_cases"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_size_sub_item"
+                    android:layout_marginTop="@dimen/margin_small_size"
+                    android:layout_marginStart="@dimen/margin_small_size"
+                    android:layout_marginEnd="@dimen/margin_normal_size"
+                    android:layout_marginBottom="@dimen/margin_small_size"
+                    android:textSize="@dimen/text_size_normal"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1"
+                    tools:text="12345" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/icon_recovered_cases"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/icon_infected_cases"
+                android:src="@drawable/ic_cross"
+                android:layout_marginTop="@dimen/margin_small_size"
+                android:layout_marginStart="@dimen/margin_normal_size"
+                android:layout_marginEnd="@dimen/margin_normal_size"
+                android:layout_marginBottom="@dimen/margin_small_size" />
+
+            <LinearLayout
+                android:id="@+id/linear_layout_recovered"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_toEndOf="@id/icon_recovered_cases"
+                android:layout_below="@id/linear_layout_healthy"
+                android:layout_alignParentEnd="true">
+
+                <TextView
+                    android:id="@+id/text_healthy_cases"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_size_sub_item"
+                    android:layout_marginTop="@dimen/margin_small_size"
+                    android:layout_marginStart="@dimen/margin_normal_size"
+                    android:layout_marginEnd="@dimen/margin_small_size"
+                    android:layout_marginBottom="@dimen/margin_small_size"
+                    android:text="@string/recovered"
+                    android:textSize="@dimen/text_size_normal"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/recovered_cases"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_size_sub_item"
+                    android:layout_marginTop="@dimen/margin_small_size"
+                    android:layout_marginStart="@dimen/margin_small_size"
+                    android:layout_marginEnd="@dimen/margin_normal_size"
+                    android:layout_marginBottom="@dimen/margin_small_size"
+                    android:textSize="@dimen/text_size_normal"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1"
+                    tools:text="123" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/icon_dead_cases"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/icon_recovered_cases"
+                android:src="@drawable/ic_dead"
+                android:layout_marginTop="@dimen/margin_small_size"
+                android:layout_marginStart="@dimen/margin_normal_size"
+                android:layout_marginEnd="@dimen/margin_normal_size"
+                android:layout_marginBottom="@dimen/margin_small_size" />
+
+            <LinearLayout
+                android:id="@+id/linear_layout_dead"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_toEndOf="@id/icon_dead_cases"
+                android:layout_below="@id/linear_layout_recovered"
+                android:layout_alignParentEnd="true">
+
+                <TextView
+                    android:id="@+id/text_dead_cases"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_size_sub_item"
+                    android:layout_marginTop="@dimen/margin_small_size"
+                    android:layout_marginStart="@dimen/margin_normal_size"
+                    android:layout_marginEnd="@dimen/margin_small_size"
+                    android:layout_marginBottom="@dimen/margin_small_size"
+                    android:text="@string/dead"
+                    android:textSize="@dimen/text_size_normal"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/dead_cases"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_size_sub_item"
+                    android:layout_marginTop="@dimen/margin_small_size"
+                    android:layout_marginStart="@dimen/margin_small_size"
+                    android:layout_marginEnd="@dimen/margin_normal_size"
+                    android:layout_marginBottom="@dimen/margin_small_size"
+                    android:textSize="@dimen/text_size_normal"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1"
+                    tools:text="1234" />
+            </LinearLayout>
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>
