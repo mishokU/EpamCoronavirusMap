@@ -2,6 +2,7 @@ package com.example.epamcoronavirusmap.ui.news
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
@@ -33,6 +34,12 @@ class NewsFragment : BaseFragment(), NewsContract.View,
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
+        Log.d("CREATE", "Yes")
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        Log.d("DESTROY", "Yes")
     }
 
     override fun onAttach(context: Context) {
