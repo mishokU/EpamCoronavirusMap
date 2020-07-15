@@ -1,5 +1,6 @@
 package com.example.epamcoronavirusmap.ui.news
 
+//import com.squareup.picasso.Picasso
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,9 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.epamcoronavirusmap.R
 import com.example.epamcoronavirusmap.api.news.model.Image
 import com.example.epamcoronavirusmap.api.news.model.NewsPost
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.news_post_recycler_view_item.view.*
 import com.example.epamcoronavirusmap.ui.base.BaseFragment
+import kotlinx.android.synthetic.main.news_post_recycler_view_item.view.*
 
 class NewsRecyclerViewAdapter(
     fragment: BaseFragment
@@ -26,9 +26,9 @@ class NewsRecyclerViewAdapter(
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         val news = news[position]
         holder.bindNews(news)
-        holder.view.setOnClickListener {
-            listener.onItemClick(news.webUrl)
-        }
+//        holder.view.setOnClickListener {
+//            listener.onItemClick(news.webUrl)
+//        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
@@ -53,11 +53,11 @@ class NewsRecyclerViewAdapter(
             view.newsExcerpt.text = news.excerpt
 
             val imageInfo: Image? = news.images?.firstOrNull()
-            imageInfo?.url?.let {
-                Picasso.get()
-                    .load(it)
-                    .into(view.newsImage)
-            }
+//            imageInfo?.url?.let {
+//                Picasso.get()
+//                    .load(it)
+//                    .into(view.newsImage)
+//            }
         }
     }
 
