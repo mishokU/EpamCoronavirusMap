@@ -8,15 +8,14 @@ import com.example.epamcoronavirusmap.ui.base.BaseContract
 import com.example.epamcoronavirusmap.ui.base.BaseFragment
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import com.google.android.gms.maps.model.CircleOptions
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
+import com.google.android.gms.maps.model.Marker
 import kotlinx.android.synthetic.main.fragment_map.*
 import javax.inject.Inject
 
 
-class MapFragment : BaseFragment(), MapContract.View, OnMapReadyCallback {
+class MapFragment : BaseFragment(), MapContract.View, OnMapReadyCallback,
+    GoogleMap.OnMarkerClickListener {
 
     @Inject
     lateinit var presenter: MapContract.Presenter
@@ -56,10 +55,6 @@ class MapFragment : BaseFragment(), MapContract.View, OnMapReadyCallback {
         }
     }
 
-    override fun showCountry(country: String) {
-        TODO("Not yet implemented")
-    }
-
     override fun showProgress() {
         progressBar.visibility = View.VISIBLE
     }
@@ -75,7 +70,18 @@ class MapFragment : BaseFragment(), MapContract.View, OnMapReadyCallback {
     override fun onMapReady(map: GoogleMap?) {
         map?.let {
             mMap = it
+            mMap!!.setOnMarkerClickListener { marker ->
+                onMarkerClick(marker)
+            }
             presenter.loadCountries()
         }
+    }
+
+    // TODO: Just open histogram
+    override fun onMarkerClick(marker: Marker?): Boolean {
+        //val country = marker?.title
+
+
+        return false
     }
 }
