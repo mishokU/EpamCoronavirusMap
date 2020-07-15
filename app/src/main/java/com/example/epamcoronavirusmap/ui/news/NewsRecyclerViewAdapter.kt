@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.epamcoronavirusmap.R
 import com.example.epamcoronavirusmap.api.news.model.Image
 import com.example.epamcoronavirusmap.api.news.model.NewsPost
+import com.example.epamcoronavirusmap.ui.base.BaseFragment
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.news_post_recycler_view_item.view.*
-import com.example.epamcoronavirusmap.ui.base.BaseFragment
 
 class NewsRecyclerViewAdapter(
     fragment: BaseFragment
@@ -44,7 +44,7 @@ class NewsRecyclerViewAdapter(
         notifyDataSetChanged()
     }
 
-    class NewsViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+    class NewsViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         private var news: NewsPost? = null
 
         fun bindNews(news: NewsPost) {
