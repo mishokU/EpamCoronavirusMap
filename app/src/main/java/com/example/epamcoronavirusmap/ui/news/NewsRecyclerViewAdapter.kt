@@ -26,9 +26,9 @@ class NewsRecyclerViewAdapter(
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         val news = news[position]
         holder.bindNews(news)
-//        holder.view.setOnClickListener {
-//            listener.onItemClick(news.webUrl)
-//        }
+        holder.view.setOnClickListener {
+            listener.onItemClick(news.webUrl)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
@@ -44,7 +44,7 @@ class NewsRecyclerViewAdapter(
         notifyDataSetChanged()
     }
 
-    class NewsViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+    class NewsViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         private var news: NewsPost? = null
 
         fun bindNews(news: NewsPost) {
@@ -53,11 +53,11 @@ class NewsRecyclerViewAdapter(
             view.newsExcerpt.text = news.excerpt
 
             val imageInfo: Image? = news.images?.firstOrNull()
-//            imageInfo?.url?.let {
-//                Picasso.get()
-//                    .load(it)
-//                    .into(view.newsImage)
-//            }
+            imageInfo?.url?.let {
+                Picasso.get()
+                    .load(it)
+                    .into(view.newsImage)
+            }
         }
     }
 
