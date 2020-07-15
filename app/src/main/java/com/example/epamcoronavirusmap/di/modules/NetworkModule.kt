@@ -2,7 +2,7 @@ package com.example.epamcoronavirusmap.di.modules
 
 import com.example.epamcoronavirusmap.api.Constants.Companion.BASE_URL
 import com.example.epamcoronavirusmap.api.Constants.Companion.NEWS_API_BASE_URL
-import com.example.epamcoronavirusmap.api.map.CoronavirusApi
+import com.example.epamcoronavirusmap.api.CoronavirusApi
 import com.example.epamcoronavirusmap.api.moshi
 import com.example.epamcoronavirusmap.api.news.CoronavirusNewsApi
 import dagger.Module

@@ -1,10 +1,10 @@
 package com.example.epamcoronavirusmap.ui.map
 
 import android.content.Context
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import com.example.epamcoronavirusmap.R
-import com.example.epamcoronavirusmap.api.map.CountryModel
 import com.example.epamcoronavirusmap.ui.base.BaseContract
 import com.example.epamcoronavirusmap.ui.base.BaseFragment
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -14,6 +14,8 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.fragment_map.*
 import javax.inject.Inject
+import com.example.epamcoronavirusmap.api.map.CountryModel
+import com.example.epamcoronavirusmap.ui.base.BaseContract
 
 class MapFragment : BaseFragment(), MapContract.View, OnMapReadyCallback {
 
@@ -26,6 +28,12 @@ class MapFragment : BaseFragment(), MapContract.View, OnMapReadyCallback {
         return R.layout.fragment_map
     }
 
+    @Suppress("UNCHECKED_CAST")
+    override fun initBasePresenter(): BaseContract.Presenter<BaseContract.View> =
+        presenter as BaseContract.Presenter<BaseContract.View>
+
+    override fun displayCountries(countries: List<String>) {
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         map_view.onCreate(null)
@@ -37,10 +45,6 @@ class MapFragment : BaseFragment(), MapContract.View, OnMapReadyCallback {
         super.onAttach(context)
         presenter.loadCountries()
     }
-
-    @Suppress("UNCHECKED_CAST")
-    override fun initBasePresenter(): BaseContract.Presenter<BaseContract.View> =
-        presenter as BaseContract.Presenter<BaseContract.View>
 
     override fun showCountriesOnMap(countries: List<CountryModel>) {
         for (country in countries) {

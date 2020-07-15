@@ -82,6 +82,9 @@ dependencies {
     //Circle image view
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+    // Images downloading
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
     // rx
     implementation "io.reactivex.rxjava2:rxjava:$rxjava2_version"
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
@@ -95,5 +98,8 @@ dependencies {
 
     //For animations
     implementation "com.airbnb.android:lottie:3.0.0"
+
+    //CardView
+    implementation "androidx.cardview:cardview:1.0.0"
 
 }

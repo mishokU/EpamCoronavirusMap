@@ -3,13 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/mapFragment">
+    app:startDestination="@id/statisticsFragment">
 
     <fragment
         android:id="@+id/newsFragment"
         android:name="com.example.epamcoronavirusmap.ui.news.NewsFragment"
         android:label="fragment_news"
-        tools:layout="@layout/fragment_news" />
+        tools:layout="@layout/fragment_news">
+        <action
+            android:id="@+id/action_newsFragment_to_postFragment"
+            app:destination="@id/postFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/postFragment"
+        android:name="com.example.epamcoronavirusmap.ui.post.PostFragment"
+        android:label="fragment_post"
+        tools:layout="@layout/fragment_post">
+        <argument
+            android:name="post_url"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/statisticsFragment"
         android:name="com.example.epamcoronavirusmap.ui.statistics.StatisticsFragment"
@@ -29,4 +42,9 @@
             android:id="@+id/action_countriesFragment_to_statisticsFragment"
             app:destination="@id/statisticsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/googleMapFragment"
+        android:name="com.example.epamcoronavirusmap.GoogleMapFragment"
+        android:label="fragment_google_map"
+        tools:layout="@layout/fragment_google_map" />
 </navigation>
