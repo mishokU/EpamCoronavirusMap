@@ -2,6 +2,7 @@ package com.example.epamcoronavirusmap.api
 
 import com.example.epamcoronavirusmap.api.Constants.Companion.BASE_URL
 import com.example.epamcoronavirusmap.api.Constants.Companion.BASE_URL_STATISTICS
+import com.example.epamcoronavirusmap.api.map.CoronavirusApi
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
@@ -41,10 +42,6 @@ val retrofitStatistics: Retrofit = Retrofit.Builder()
     .build()
 
 object CoronavirusService {
-    val retrofitService: CoronavirusApi by lazy {
-        retrofit.create(CoronavirusApi::class.java)
-    }
-
     val retrofitServiceStatistics: CoronavirusApi by lazy {
         retrofitStatistics.create(CoronavirusApi::class.java)
     }

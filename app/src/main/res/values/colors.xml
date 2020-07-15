@@ -3,5 +3,10 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <color name="greenCircleColor">#FF00FF00</color>
+    <color name="blueCircleColor">#FF0000FF</color>
+    <color name="cyanCircleColor">#FF00FFFF</color>
+    <color name="redCircleColor">#FFFF0000</color>
     <color name="white">#FFFFFF</color>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.epamcoronavirusmap.api
+package com.example.epamcoronavirusmap.api.map
 
 import com.example.epamcoronavirusmap.api.histogram.DailyCountryStatistics
 import com.example.epamcoronavirusmap.ui.countries.CountryResponse
@@ -14,12 +14,13 @@ import retrofit2.http.Path
 interface CoronavirusApi {
 
     @GET("/summary")
-    fun getTestData(): Observable<List<String>>
+    fun getGlobalCountriesData(): Observable<SummaryModel>
 
     @GET("/dayone/country/{country}/status/confirmed")
     fun getCountryInfo(@Path("country") country: String): Observable<List<DailyCountryStatistics>>
 
     @GET("countries?yesterday&sort")
     fun getAllCountries(): Observable<List<CountryResponse>>
+
 }
 
