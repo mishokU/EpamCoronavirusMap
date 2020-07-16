@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/newsFragment">
+    app:startDestination="@id/countriesFragment">
 
     <fragment
         android:id="@+id/dailyStatisticsFragment"
@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_newsFragment_to_countriesFragment"
             app:destination="@id/countriesFragment" />
+        <action
+            android:id="@+id/action_newsFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
 
     </fragment>
     <fragment
@@ -45,6 +48,10 @@
         <action
             android:id="@+id/action_statisticsFragment_to_newsFragment"
             app:destination="@id/newsFragment" />
+        <action
+            android:id="@+id/action_statisticsFragment_to_mapFragment"
+            app:destination="@id/mapFragment"
+            app:launchSingleTop="true" />
 
     </fragment>
 
@@ -60,6 +67,9 @@
         <action
             android:id="@+id/action_mapFragment_to_dailyHistogramFragment"
             app:destination="@id/dailyStatisticsFragment" />
+        <action
+            android:id="@+id/action_mapFragment_to_statisticsFragment"
+            app:destination="@id/statisticsFragment" />
     </fragment>
 
     <fragment
@@ -70,5 +80,8 @@
         <action
             android:id="@+id/action_countriesFragment_to_statisticsFragment"
             app:destination="@id/statisticsFragment" />
+        <action
+            android:id="@+id/action_countriesFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
     </fragment>
 </navigation>
