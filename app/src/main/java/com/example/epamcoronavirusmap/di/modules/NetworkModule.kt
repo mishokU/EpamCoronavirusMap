@@ -7,6 +7,8 @@ import com.example.epamcoronavirusmap.api.moshi
 import com.example.epamcoronavirusmap.api.news.CoronavirusNewsApi
 import dagger.Module
 import dagger.Provides
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -41,5 +43,15 @@ class NetworkModule {
         .baseUrl(NEWS_API_BASE_URL)
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .client(
+            OkHttpClient()
+                .newBuilder()
+                .addInterceptor(
+                    HttpLoggingInterceptor()
+                        .setLevel(
+                            HttpLoggingInterceptor.Level.BODY
+                        )
+                ).build()
+        )
         .build()
 }
