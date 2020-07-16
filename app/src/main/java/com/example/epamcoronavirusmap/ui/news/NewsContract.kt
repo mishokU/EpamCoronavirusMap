@@ -3,9 +3,9 @@ package com.example.epamcoronavirusmap.ui.news
 import com.example.epamcoronavirusmap.api.news.model.NewsPost
 import com.example.epamcoronavirusmap.ui.base.BaseContract
 
-interface NewsContract {
+class NewsContract : BaseContract() {
 
-    interface Presenter : BaseContract.Presenter<NewsContract.View> {
+    interface Presenter : BaseContract.Presenter<View> {
         fun loadPosts()
         fun onItemClick(url: String)
     }
