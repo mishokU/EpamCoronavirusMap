@@ -8,4 +8,32 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="HistogramStyle">
+        <item name="legendEnabled">false</item>
+        <item name="descriptionEnabled">false</item>
+        <item name="xAxisGridLines">false</item>
+        <item name="axisRightEnabled">false</item>
+        <item name="axisLeftAxisLines">false</item>
+        <item name="axisLeftDrawLabels">false</item>
+        <item name="axisLeftGridLines">false</item>
+        <item name="xRangeMaximum">8.0</item>
+        <item name="xAxisScaleEnabled">false</item>
+        <item name="yAxisScaleEnabled">false</item>
+    </style>
+
+    <style name="CustomAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Splash" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:statusBarColor">@color/colorAccent</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
 </resources>

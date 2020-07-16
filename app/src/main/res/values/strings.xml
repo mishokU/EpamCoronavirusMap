@@ -8,4 +8,9 @@
     <string name="dead">Dead:</string>
 
     <string name="post_image_content_description">Post image</string>
+    <string name="_3000_to_4000">from 4000</string>
+    <string name="_2000_to_3000">2000 to 3000</string>
+    <string name="_1000_to_2000">1000 to 2000</string>
+    <string name="green_circle_total_range">0 to 1000</string>
+    <string name="total_cases">Total cases</string>
 </resources>

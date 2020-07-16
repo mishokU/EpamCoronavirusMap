@@ -1,5 +1,7 @@
 package com.example.epamcoronavirusmap.di.modules
 
+import com.example.epamcoronavirusmap.ui.histogram.DailyStatisticsContract
+import com.example.epamcoronavirusmap.ui.histogram.DailyStatisticsPresenter
 import com.example.epamcoronavirusmap.api.news.CoronavirusNewsApi
 import com.example.epamcoronavirusmap.ui.map.MapContract
 import com.example.epamcoronavirusmap.ui.map.MapPresenter
@@ -41,6 +43,11 @@ class AppModule {
         api: CoronavirusNewsApi,
         scheduler: SchedulerProviderImpl
     ): NewsContract.Presenter = NewsPresenter(api, scheduler)
+
+    @Provides
+    @Singleton
+    fun provideDailyStatisticsPresenter(schedulerProvider: SchedulerProviderImpl):
+            DailyStatisticsContract.Presenter = DailyStatisticsPresenter(schedulerProvider)
 
     @Provides
     @Singleton

@@ -5,8 +5,7 @@ import com.example.epamcoronavirusmap.ui.base.BaseContract
 class MapContract : BaseContract() {
 
     interface View : BaseContract.View {
-        fun displayCountries(countries: List<String>)
-        fun showCountry(country: String)
+        fun showCountriesOnMap(countries: List<MapUIModel>)
     }
 
     interface Presenter : BaseContract.Presenter<View> {

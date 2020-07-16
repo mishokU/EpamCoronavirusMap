@@ -1,5 +1,6 @@
 package com.example.epamcoronavirusmap.ui.countries
 
+import com.example.epamcoronavirusmap.api.map.CountryInfo
 import com.squareup.moshi.Json
 
 data class CountryResponse(
@@ -23,5 +24,6 @@ data class CountryResponse(
     val tests: Int?,
     val testsPerOneMillion: Int?,
     val todayCases: Int?,
-    val todayDeaths: Int?
+    val todayDeaths: Int?,
+    val countryInfo: CountryInfo?
 )
