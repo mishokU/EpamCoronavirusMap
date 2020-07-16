@@ -56,6 +56,7 @@ class DailyStatisticsHistogram(
                         getBoolean(R.styleable.DailyStatisticsHistogram_xAxisScaleEnabled, true)
                     isScaleYEnabled =
                         getBoolean(R.styleable.DailyStatisticsHistogram_yAxisScaleEnabled, true)
+                    setNoDataText(String())
                     xRangeMaximum = try {
                         getFloatOrThrow(R.styleable.DailyStatisticsHistogram_xRangeMaximum)
                     } catch (e: Exception) {
