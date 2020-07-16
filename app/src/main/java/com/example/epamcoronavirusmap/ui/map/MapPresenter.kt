@@ -15,10 +15,6 @@ class MapPresenter(private val scheduler: SchedulerProvider) : BasePresenter<Map
     private val bigTotalCases: IntRange = IntRange(onePartOfConfirmed * 2, onePartOfConfirmed * 3)
     private val hugeTotalCases: IntRange = IntRange(onePartOfConfirmed * 3, onePartOfConfirmed * 4)
 
-    override fun onCountryClick(country: String) {
-        view?.showCountry(country)
-    }
-
     override fun loadCountries() {
         view?.showProgress()
         subscriptions.add(

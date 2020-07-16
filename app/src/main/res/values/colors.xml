@@ -9,5 +9,4 @@
     <color name="blueCircleColor">#FF0000FF</color>
     <color name="cyanCircleColor">#FF00FFFF</color>
     <color name="redCircleColor">#FFFF0000</color>
-    <color name="white">#FFFFFF</color>
 </resources>

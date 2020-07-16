@@ -3,6 +3,7 @@ package com.example.epamcoronavirusmap.ui.map
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import com.example.epamcoronavirusmap.R
 import com.example.epamcoronavirusmap.ui.base.BaseContract
 import com.example.epamcoronavirusmap.ui.base.BaseFragment
@@ -77,11 +78,11 @@ class MapFragment : BaseFragment(), MapContract.View, OnMapReadyCallback,
         }
     }
 
-    // TODO: Just open histogram
     override fun onMarkerClick(marker: Marker?): Boolean {
-        //val country = marker?.title
-
-
+        marker?.title?.let {
+            val action = MapFragmentDirections.actionMapFragmentToDailyHistogramFragment(it)
+            findNavController().navigate(action)
+        }
         return false
     }
 }

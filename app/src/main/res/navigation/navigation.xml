@@ -9,7 +9,11 @@
         android:id="@+id/dailyStatisticsFragment"
         android:name="com.example.epamcoronavirusmap.ui.histogram.DailyStatisticsFragment"
         android:label="fragment_daily_statistics"
-        tools:layout="@layout/fragment_daily_statistics" />
+        tools:layout="@layout/fragment_daily_statistics">
+        <argument
+            android:name="country"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/newsFragment"
         android:name="com.example.epamcoronavirusmap.ui.news.NewsFragment"
@@ -53,6 +57,9 @@
         <action
             android:id="@+id/action_mapFragment_to_newsFragment"
             app:destination="@id/newsFragment" />
+        <action
+            android:id="@+id/action_mapFragment_to_dailyHistogramFragment"
+            app:destination="@id/dailyStatisticsFragment" />
     </fragment>
 
     <fragment
