@@ -1,6 +1,7 @@
 package com.example.epamcoronavirusmap.ui.histogram
 
-import android.content.Context
+import android.os.Bundle
+import android.view.View
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import com.example.epamcoronavirusmap.R
@@ -24,15 +25,18 @@ class DailyStatisticsFragment : BaseFragment(), DailyStatisticsContract.View {
     override fun initBasePresenter(): BaseContract.Presenter<BaseContract.View> =
         presenter as BaseContract.Presenter<BaseContract.View>
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        presenter.loadStatistics(Constants.DEFAULT_STATISTICS_COUNTRY)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        arguments?.let {
+            val safeArgs = DailyStatisticsFragmentArgs.fromBundle(it)
+            presenter.loadStatistics(safeArgs.country)
+            titleTextView.text = safeArgs.country + Constants.DAILY_GROWTH_STRING
+        }
     }
 
     override fun setBarChartData(growth: List<Float>, date: List<String>) {
         histogram.setData(growth, date)
     }
-
 
     override fun showProgress() {
         progressBar.visibility = VISIBLE
