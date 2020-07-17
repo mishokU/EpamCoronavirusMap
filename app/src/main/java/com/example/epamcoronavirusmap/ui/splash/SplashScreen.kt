@@ -42,7 +42,6 @@ class SplashScreen : Fragment() {
         rotateAnimator.interpolator = DecelerateInterpolator()
         rotateAnimator.setAnimationListener(object : CustomRotateAnimationListener() {
             override fun onAnimationEnd(animation: Animation?) {
-                this@SplashScreen.findNavController().popBackStack(R.id.splashScreen, true)
                 this@SplashScreen.findNavController().navigate(R.id.newsFragment)
                 (activity as MainActivity).bottom_nav.visibility = View.VISIBLE
             }
