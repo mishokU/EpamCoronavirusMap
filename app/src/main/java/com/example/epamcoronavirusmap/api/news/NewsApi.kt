@@ -10,7 +10,7 @@ import retrofit2.http.Path
 interface CoronavirusNewsApi {
 
     @Headers(
-        "Subscription-key: $NEWS_API_SUBSCRIPTION_KEY"
+        "Subscription-Key: $NEWS_API_SUBSCRIPTION_KEY"
     )
     @GET("news/{location}")
     fun getNews(@Path("location") location: String): Observable<NewsInfo?>

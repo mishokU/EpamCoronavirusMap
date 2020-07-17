@@ -7,4 +7,7 @@
 
     <dimen name="margin_small_size">4dp</dimen>
     <dimen name="margin_normal_size">8dp</dimen>
+
+    <dimen name="daily_statistics_histogram_height">300dp</dimen>
+    <dimen name="title_view_margin">20dp</dimen>
 </resources>

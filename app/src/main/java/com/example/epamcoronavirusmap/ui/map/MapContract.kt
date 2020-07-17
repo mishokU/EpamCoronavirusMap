@@ -9,7 +9,6 @@ class MapContract : BaseContract() {
     }
 
     interface Presenter : BaseContract.Presenter<View> {
-        fun onCountryClick(country: String)
         fun loadCountries()
     }
 }
